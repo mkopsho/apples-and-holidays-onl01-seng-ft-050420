@@ -53,8 +53,8 @@ def all_holidays_with_bbq(holiday_hash)
       bbqs = []
       if supplies.include?("BBQ")
         bbqs << holiday
+        bbqs
       end
     end
-    bbqs
   end
 end
