@@ -50,11 +50,7 @@ def all_supplies_in_holidays(holiday_hash)
   holiday_hash.each do |season, holidays|
     puts season.to_s.capitalize + ":"
     holidays.each do |holiday, supplies| # I feel pretty gross about all this text manipulation. Is there a better way?
-      if holiday == :fourth_of_july || holiday == :memorial_day || holiday == :new_years
-        puts "  " + holiday.to_s.split("_").join(" ").capitalize + ": " + supplies.join(", ")
-      else
-        puts "  " + holiday.to_s.capitalize + ": " + supplies.join(", ")
-      end
+      puts "  " + holiday.to_s.split("_").join(" ").capitalize + ": " + supplies.join(", ")
     end
   end
 end
