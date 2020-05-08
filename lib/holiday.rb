@@ -21,6 +21,15 @@ end
 def all_winter_holiday_supplies(holiday_hash)
   holiday_hash[:winter].values.flatten
 end
+  
+def all_supplies_in_holidays(holiday_hash)
+  holiday_hash.each do |season, holidays|
+    puts season.to_s.capitalize + ":"
+    holidays.each do |holiday, supplies| # I feel pretty gross about all this text manipulation. Is there a better way?
+      puts "  " + holiday.to_s.split("_").map(&:capitalize).join(" ") + ": " + supplies.join(", ") # Do more reading on `map(&:); it's apparently a "hack" to use the preceding enumberable...`
+    end
+  end
+end
 
   # holiday_hash = {
   #   :winter => {
@@ -37,26 +46,12 @@ end
   #     :memorial_day => ["BBQ"]
   #   }
   # }
-  
-  # iterate through holiday_hash and print items such that your readout resembles:
-  # Winter:
-  #   Christmas: Lights, Wreath
-  #   New Years: Party Hats
-  # Summer:
-  #   Fourth Of July: Fireworks, BBQ
-  # etc.
-  
-def all_supplies_in_holidays(holiday_hash)
-  holiday_hash.each do |season, holidays|
-    puts season.to_s.capitalize + ":"
-    holidays.each do |holiday, supplies| # I feel pretty gross about all this text manipulation. Is there a better way?
-      puts "  " + holiday.to_s.split("_").map(&:capitalize).join(" ") + ": " + supplies.join(", ") # Do more reading on `map(&:)`
-    end
-  end
-end
 
 def all_holidays_with_bbq(holiday_hash)
-  # return an array of holiday names (as symbols) where supply lists
-  # include the string "BBQ"
-
+  holiday_hash.each do |season, holidays|
+    holidays.find_all do |holiday, supplies|
+      supplies.include?("BBQ")
+      holiday
+    end
+  end
 end
