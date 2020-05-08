@@ -50,7 +50,7 @@ def all_supplies_in_holidays(holiday_hash)
   holiday_hash.each do |season, holidays|
     puts season.to_s.capitalize + ":"
     holidays.each do |holiday, supplies| # I feel pretty gross about all this text manipulation. Is there a better way?
-      puts "  " + holiday.to_s.split("_").join(" ").map(&:capitalize) + ": " + supplies.join(", ")
+      puts "  " + holiday.to_s.split("_").map(&:capitalize).join(" ") + ": " + supplies.join(", ") # Do more reading on `map(&:)`
     end
   end
 end
